@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Graduation_day.iml" filepath="$PROJECT_DIR$/Graduation_day.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kct-graduation.iml" filepath="$PROJECT_DIR$/kct-graduation.iml" />
     </modules>
   </component>
 </project>

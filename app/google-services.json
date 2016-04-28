@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1034266183667",
+    "project_id": "kct-graduation"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034266183667:android:9b38e0337ed7e764",
+        "android_client_info": {
+          "package_name": "com.example.blackpanther.graduation_day"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiBnc2o25InkR9eDrVSZQTsTb-E7kCSpE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
