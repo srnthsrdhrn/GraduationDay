@@ -1,4 +1,4 @@
-package com.example.blackpanther.graduation_day;
+package io.iqube.kctgrad;
 
 import android.app.IntentService;
 import android.content.Intent;

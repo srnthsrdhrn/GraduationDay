@@ -1,4 +1,4 @@
-package com.example.blackpanther.graduation_day;
+package io.iqube.kctgrad;
 
 /**
  * Created by Black Panther on 27-04-2016.

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.blackpanther.graduation_day" >
+    package="io.iqube.kctgrad" >
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <permission android:name="com.example.blackpanther.graduation_day.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <permission android:name="io.iqube.kctgrad.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
     <uses-permission android:name="com.example.blackpanther.graduation_day.permission.C2D_MESSAGE"/>
 
     <application
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="io.iqube.kctgrad.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -31,12 +31,12 @@
                 <category android:name="com.example.graduation_day."/>
             </intent-filter>
         </receiver>
-        <service android:name=".GCMPushReceiverService" android:exported="false">
+        <service android:name="io.iqube.kctgrad.GCMPushReceiverService" android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
             </intent-filter>
         </service>
-        <service android:name=".GCMRegistrationIntentService" android:exported="false">
+        <service android:name="io.iqube.kctgrad.GCMRegistrationIntentService" android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID"/>
             </intent-filter>
