@@ -9,13 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 public class DrawerActivity extends AppCompatActivity implements FeedbackFragment.OnFragmentInteractionListener{
@@ -52,8 +50,9 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Test").withDescription("FeedBack").withIdentifier(1),
-                        new SectionDrawerItem().withName("Test Section")
+                        new PrimaryDrawerItem().withName("Agenda").withDescription("Happenings").withIdentifier(2),
+                        new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(2),
+                        new PrimaryDrawerItem().withName("Feedback").withDescription("Give FeedBack").withIdentifier(1)
 
                          ) // add the items we want to use with our Drawer
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
