@@ -9,6 +9,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
@@ -21,6 +22,9 @@ public class GCMPushReceiverService extends GcmListenerService {
     public void onMessageReceived(String from, Bundle data) {
         String message = data.getString("message");
         sendNotification(message);
+        Intent intent = new Intent(this,notificationFragment.class);
+        intent.putExtra("notification",message);
+        startService(intent);
     }
 
     private void sendNotification(String message){
@@ -35,6 +39,7 @@ public class GCMPushReceiverService extends GcmListenerService {
                     .setContentText(message).setAutoCancel(true).setContentIntent(pendingIntent).setVisibility(Notification.VISIBILITY_PUBLIC).setSound(sound);
 
             NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(0,noBuilder.build());
+            notificationManager.notify(0, noBuilder.build());
         }
+
     }

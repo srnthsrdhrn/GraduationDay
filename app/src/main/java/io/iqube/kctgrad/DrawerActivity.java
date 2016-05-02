@@ -51,7 +51,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Agenda").withDescription("Happenings").withIdentifier(2),
-                        new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(2),
+                        new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(3),
                         new PrimaryDrawerItem().withName("Feedback").withDescription("Give FeedBack").withIdentifier(1)
 
                          ) // add the items we want to use with our Drawer
@@ -71,6 +71,12 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
 
                                 Fragment f = FeedbackFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
+                            }
+                            if (drawerItem.getIdentifier() == 2) {
+//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
+
+                                Fragment n = notificationFragment.newInstance();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, n).commit();
                             }
                             if (intent != null) {
                                 DrawerActivity.this.startActivity(intent);

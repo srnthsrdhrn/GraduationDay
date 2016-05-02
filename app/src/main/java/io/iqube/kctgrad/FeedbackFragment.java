@@ -1,6 +1,7 @@
 package io.iqube.kctgrad;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -45,6 +46,7 @@ public class FeedbackFragment extends Fragment {
 
 
     QuestionArrayAdapter adapter;
+
 
     public FeedbackFragment() {
         // Required empty public constructor
