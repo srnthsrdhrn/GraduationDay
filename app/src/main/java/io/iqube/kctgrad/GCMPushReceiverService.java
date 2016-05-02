@@ -22,9 +22,6 @@ public class GCMPushReceiverService extends GcmListenerService {
     public void onMessageReceived(String from, Bundle data) {
         String message = data.getString("message");
         sendNotification(message);
-        Intent intent = new Intent(this,notificationFragment.class);
-        intent.putExtra("notification",message);
-        startService(intent);
     }
 
     private void sendNotification(String message){

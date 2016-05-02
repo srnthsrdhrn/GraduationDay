@@ -74,9 +74,8 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                             }
                             if (drawerItem.getIdentifier() == 2) {
 //                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
-
-                                Fragment n = notificationFragment.newInstance();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, n).commit();
+                                Fragment a = AgendaFragment.newInstance();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
                             }
                             if (intent != null) {
                                 DrawerActivity.this.startActivity(intent);
