@@ -51,7 +51,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Agenda").withDescription("Happenings").withIdentifier(2),
-                        new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(2),
+                        new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(3),
                         new PrimaryDrawerItem().withName("Feedback").withDescription("Give FeedBack").withIdentifier(1)
 
                          ) // add the items we want to use with our Drawer
@@ -72,6 +72,13 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                                 Fragment f = FeedbackFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
                             }
+                            if (drawerItem.getIdentifier() == 3) {
+//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
+
+                                Fragment f = NotificationFragment.newInstance();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
+                            }
+
                             if (intent != null) {
                                 DrawerActivity.this.startActivity(intent);
                             }
@@ -92,7 +99,6 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
 
 
         }
-
 
     }
 
@@ -121,4 +127,12 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+    public void fun()
+    {
+
+    }
+
+   
+
 }

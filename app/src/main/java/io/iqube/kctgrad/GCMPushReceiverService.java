@@ -12,6 +12,8 @@ import android.support.v4.app.NotificationCompat;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
+import io.realm.Realm;
+
 /**
  * Created by Black Panther on 28-04-2016.
  */
@@ -36,5 +38,18 @@ public class GCMPushReceiverService extends GcmListenerService {
 
             NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(0,noBuilder.build());
+
+
+
+
+        Realm realm=Realm.getDefaultInstance();
+        realm.beginTransaction();
+        io.iqube.kctgrad.model.Notification not=realm.createObject(io.iqube.kctgrad.model.Notification.class);
+        not.setMessage(message);
+
+        realm.commitTransaction();
+        realm.close();
+
+
         }
     }
