@@ -154,7 +154,7 @@ public class FeedbackFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
-                Toast.makeText(FeedbackFragment.this.getActivity(), "Network Error happened!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(FeedbackFragment.this.getActivity().getApplicationContext(), "Network Error happened!!", Toast.LENGTH_LONG).show();
             }
         });
     }

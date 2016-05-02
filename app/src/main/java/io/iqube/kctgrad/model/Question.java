@@ -10,6 +10,8 @@ import java.util.List;
 
 public class Question {
 
+    private Integer choice_id;
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -25,6 +27,11 @@ public class Question {
      * @return
      *     The id
      */
+
+    public Integer getChoice_id(){return choice_id;}
+
+    public void setChoice_id(Integer choice_id){this.choice_id=choice_id;}
+
     public Integer getId() {
         return id;
     }
