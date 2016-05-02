@@ -49,40 +49,48 @@ public class QuestionArrayAdapter extends BaseAdapter {
     }
 
 
-    public JsonObject getPostData()
+    public JsonArray getPostData()
     {
         JsonArray jsonArray=new JsonArray();
 
         for(Question question :questions) {
             JsonObject jsonObject = new JsonObject();
-            
+            jsonObject.addProperty("question",question.getId());
+            jsonObject.addProperty("option",question.getChoice_id());
+            jsonArray.add(jsonObject);
         }
 
+        return jsonArray;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final Question question=getItem(position);
-
+        RadioGroup rg;
                 if(convertView==null)
                 {
                     convertView= inflater.inflate(R.layout.lv_question_single,parent,false);
+
+
+                    rg=(RadioGroup) convertView.findViewById(R.id.options_radio);
+
+
+
+                    for (Option option : question.getOptions()
+                            ) {
+
+                        RadioButton rb=new RadioButton(getContext());
+                        rb.setText(option.getChoiceText());
+                        rb.setId(option.getId());
+                        rg.addView(rb);
+
+                    }
                 }
 
         TextView QuestionText=(TextView)convertView.findViewById(R.id.question_text);
 
-        RadioGroup rg=(RadioGroup) convertView.findViewById(R.id.options_radio);
+        rg=(RadioGroup) convertView.findViewById(R.id.options_radio);
 
-
-        for (Option option : question.getOptions()
-                ) {
-
-            RadioButton rb=new RadioButton(getContext());
-            rb.setText(option.getChoiceText());
-            rb.setId(option.getId());
-            rg.addView(rb);
-
-        }
 
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
