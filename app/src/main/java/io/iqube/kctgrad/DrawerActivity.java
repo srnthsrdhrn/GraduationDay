@@ -72,7 +72,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                                 Fragment f = FeedbackFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
                             }
-<<<<<<< HEAD
+
                             if (drawerItem.getIdentifier() == 3) {
 //                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
 
@@ -80,13 +80,13 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
                             }
 
-=======
+
                             if (drawerItem.getIdentifier() == 2) {
 //                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
                                 Fragment a = AgendaFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
                             }
->>>>>>> origin/master
+
                             if (intent != null) {
                                 DrawerActivity.this.startActivity(intent);
                             }

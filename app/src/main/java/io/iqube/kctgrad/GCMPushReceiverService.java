@@ -9,7 +9,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
@@ -27,19 +26,6 @@ public class GCMPushReceiverService extends GcmListenerService {
     }
 
     private void sendNotification(String message){
-<<<<<<< HEAD
-        Intent intent = new Intent(this,MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        int requestCode =0;
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,requestCode,intent,PendingIntent.FLAG_ONE_SHOT);
-
-        Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder noBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher).setContentText("My GCM message :X:X")
-                .setContentText(message).setAutoCancel(true).setContentIntent(pendingIntent).setVisibility(Notification.VISIBILITY_PUBLIC).setSound(sound);
-
-        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0,noBuilder.build());
 
 
 
@@ -52,7 +38,7 @@ public class GCMPushReceiverService extends GcmListenerService {
         realm.commitTransaction();
         realm.close();
 
-=======
+
             Intent intent = new Intent(this,MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             int requestCode =0;
@@ -66,7 +52,7 @@ public class GCMPushReceiverService extends GcmListenerService {
             NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(0, noBuilder.build());
         }
->>>>>>> origin/master
+
 
     }
-}
+
