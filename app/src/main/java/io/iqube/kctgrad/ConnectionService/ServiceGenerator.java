@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import io.iqube.kctgrad.model.Degree;
 import io.iqube.kctgrad.model.Question;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -35,8 +36,13 @@ import retrofit2.http.POST;
         @GET("questions/")
         Call<List<Question>> getQuestions();
 
+        @GET("degrees/")
+        Call<List<Degree>> getDegrees();
+
         @POST("answers/")
-        Call<JsonObject> finishFeedBack(@Body JsonObject answers);
+        Call<JsonObject> finishFeedBack(@Body JsonObject answer);
+
+
 
         @POST("feedback/")
         Call<JsonObject>postFeedback(@Body JsonObject feedBack);

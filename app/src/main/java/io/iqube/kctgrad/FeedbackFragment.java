@@ -1,6 +1,8 @@
 package io.iqube.kctgrad;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,13 +10,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.iqube.kctgrad.ConnectionService.ServiceGenerator;
+import io.iqube.kctgrad.model.Degree;
 import io.iqube.kctgrad.model.Question;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,8 +45,12 @@ public class FeedbackFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    Spinner degrees;
     ListView Questions;
     ArrayList<Question> questionsList;
+    ArrayList<Degree> degreeArrayList;
+    SpinnerAdapter spinnerAdapter;
+    EditText name;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -80,11 +94,35 @@ public class FeedbackFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Questions=(ListView) view.findViewById(R.id.listView);
+
+        View HeaderView= LayoutInflater.from(getContext()).inflate(R.layout.lv_questions_header,null);
+
+
+        View FooterView= LayoutInflater.from(getContext()).inflate(R.layout.lv_questions_footer,null);
+        Questions.addHeaderView(HeaderView);
+        Questions.addFooterView(FooterView);
+
+        name=(EditText)view.findViewById(R.id.name) ;
+        name.requestFocus();
         questionsList=new ArrayList<Question>();
+        degreeArrayList=new ArrayList<Degree>();
         adapter=new QuestionArrayAdapter(this.getActivity(),questionsList);
         Questions.setAdapter(adapter);
+        degrees=(Spinner)view.findViewById(R.id.spinner);
+        spinnerAdapter=new SpinnerAdapter(getContext(),degreeArrayList);
         loadDate();
 
+//        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        degrees.setAdapter(spinnerAdapter);
+
+        Button submit=(Button) view.findViewById(R.id.submit);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitData();
+            }
+        });
 
     }
 
@@ -129,6 +167,8 @@ public class FeedbackFragment extends Fragment {
 
     public void loadDate()
     {
+        showSpinner();
+
         ServiceGenerator.KCTClient client=ServiceGenerator.createService(ServiceGenerator.KCTClient.class);
 
         client.getQuestions().enqueue(new Callback<List<Question>>() {
@@ -157,5 +197,106 @@ public class FeedbackFragment extends Fragment {
                 Toast.makeText(FeedbackFragment.this.getActivity().getApplicationContext(), "Network Error happened!!", Toast.LENGTH_LONG).show();
             }
         });
+
+
+
+    client.getDegrees().enqueue(new Callback<List<Degree>>() {
+        @Override
+        public void onResponse(Call<List<Degree>> call, Response<List<Degree>> response) {
+
+            if(response.code()==200)
+            {
+                spinnerAdapter.addAll(response.body());
+            }
+        }
+
+        @Override
+        public void onFailure(Call<List<Degree>> call, Throwable t) {
+            Toast.makeText(FeedbackFragment.this.getActivity().getApplicationContext(), "Network Error happened!!", Toast.LENGTH_LONG).show();
+        }
+    });
+
+    }
+
+
+    protected class SpinnerAdapter extends ArrayAdapter<Degree>
+    {
+        public SpinnerAdapter(Context context,List<Degree> objects) {
+            super(context, android.R.layout.simple_spinner_item, objects);
+        }
+
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            if (convertView == null) {
+                TextView label = new TextView(getContext());
+                label.setTextColor(Color.BLACK);
+                Degree degree = getItem(position);
+                label.setText(degree.getName());
+                label.setId(degree.getId());
+                return label;
+            }
+
+            return convertView;
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView,
+                                    ViewGroup parent) {
+            TextView label = new TextView(getContext());
+            label.setTextColor(Color.BLACK);
+            label.setText(getItem(position).getName());
+            label.setPadding(10,10,10,10);
+            return label;
+        }
+    }
+
+    ProgressDialog ring;
+
+    protected void showSpinner()
+    {
+
+        ring = ProgressDialog.show(getActivity(), "Please wait ...", "Loading ...", true);
+
+        ring.setCancelable(true);
+    }
+
+    protected void hideLoader()
+    {
+        if(ring!=null)
+            ring.cancel();
+    }
+
+
+    protected void submitData()
+    {
+
+        ServiceGenerator.KCTClient client=ServiceGenerator.createService(ServiceGenerator.KCTClient.class);
+
+        JsonObject jsonObject=new JsonObject();
+
+
+
+
+        jsonObject.addProperty("name",name.getText().toString());
+        jsonObject.addProperty("degree",new Integer(degrees.getSelectedView().getId()));
+        jsonObject.add("answersTh",adapter.getPostData());
+        showSpinner();
+        client.finishFeedBack(jsonObject).enqueue(
+                new Callback<JsonObject>() {
+                    @Override
+                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        hideLoader();
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+                        hideLoader();
+
+                    }
+                }
+        );
     }
 }
