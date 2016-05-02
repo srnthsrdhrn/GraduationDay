@@ -2,7 +2,11 @@ package io.iqube.kctgrad;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+<<<<<<< HEAD
 import android.graphics.Color;
+=======
+import android.content.Intent;
+>>>>>>> origin/master
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -59,6 +63,7 @@ public class FeedbackFragment extends Fragment {
 
 
     QuestionArrayAdapter adapter;
+
 
     public FeedbackFragment() {
         // Required empty public constructor
