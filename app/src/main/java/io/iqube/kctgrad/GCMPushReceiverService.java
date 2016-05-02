@@ -26,18 +26,18 @@ public class GCMPushReceiverService extends GcmListenerService {
     }
 
     private void sendNotification(String message){
-            Intent intent = new Intent(this,MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            int requestCode =0;
-            PendingIntent pendingIntent = PendingIntent.getActivity(this,requestCode,intent,PendingIntent.FLAG_ONE_SHOT);
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        int requestCode =0;
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,requestCode,intent,PendingIntent.FLAG_ONE_SHOT);
 
-            Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            NotificationCompat.Builder noBuilder = new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.mipmap.ic_launcher).setContentText("My GCM message :X:X")
-                    .setContentText(message).setAutoCancel(true).setContentIntent(pendingIntent).setVisibility(Notification.VISIBILITY_PUBLIC).setSound(sound);
+        Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder noBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher).setContentText("My GCM message :X:X")
+                .setContentText(message).setAutoCancel(true).setContentIntent(pendingIntent).setVisibility(Notification.VISIBILITY_PUBLIC).setSound(sound);
 
-            NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(0,noBuilder.build());
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0,noBuilder.build());
 
 
 
@@ -51,5 +51,5 @@ public class GCMPushReceiverService extends GcmListenerService {
         realm.close();
 
 
-        }
     }
+}

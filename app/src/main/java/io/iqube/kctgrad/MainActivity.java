@@ -35,36 +35,38 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     ListView lvAgenda;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        lvAgenda = (ListView)findViewById(R.id.lvagenda);
+        lvAgenda = (ListView) findViewById(R.id.lvagenda);
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if(intent.getAction().endsWith(GCMRegistrationIntentService.REGISTRATION_SUCCESS)){
+                if (intent.getAction().endsWith(GCMRegistrationIntentService.REGISTRATION_SUCCESS)) {
                     String token = intent.getStringExtra("token");
                     String topic = intent.getStringExtra("topic");
                     Toast.makeText(getApplicationContext(), "GCM token:" + token + "\n" + "GCM topic: " + topic, Toast.LENGTH_LONG).show();
-                }else if(intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_ERROR)){
+                } else if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_ERROR)) {
 
-                    Toast.makeText(getApplicationContext(),"GCM Registration Error !!",Toast.LENGTH_LONG).show();
-                }else {
+                    Toast.makeText(getApplicationContext(), "GCM Registration Error !!", Toast.LENGTH_LONG).show();
+                } else {
 
                 }
             }
         };
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         Log.w("MainActivity", "onResume");
         LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(GCMRegistrationIntentService.REGISTRATION_SUCCESS));
-        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,new IntentFilter(GCMRegistrationIntentService.REGISTRATION_ERROR));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver, new IntentFilter(GCMRegistrationIntentService.REGISTRATION_ERROR));
     }
 
     @Override
@@ -75,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void fetchEvents()
-    {
+    public void fetchEvents() {
         Ion.with(this).load("http://iq.bookflip.in/graduation_day/returnevents.php").asString().withResponse().setCallback(
                 new FutureCallback<Response<String>>() {
                     @Override
@@ -115,23 +116,27 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-        if(ConnectionResult.SUCCESS != resultCode)
-        {
-            if(GooglePlayServicesUtil.isUserRecoverableError(resultCode))
-            {
-                Toast.makeText(getApplicationContext(),"Google Play Service is not Enabled in this device!",Toast.LENGTH_LONG).show();
-                GooglePlayServicesUtil.showErrorNotification(resultCode, getApplication());
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"This device does not support for Google Play Service!",Toast.LENGTH_LONG).show();
-            }
-        }else {
-            Intent intent = new Intent(this,GCMRegistrationIntentService.class);
-            startService(intent);
+
+
+    int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+    if(ConnectionResult.SUCCESS!=resultCode)
+
+    {
+        if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+            Toast.makeText(getApplicationContext(), "Google Play Service is not Enabled in this device!", Toast.LENGTH_LONG).show();
+            GooglePlayServicesUtil.showErrorNotification(resultCode, getApplication());
+        } else {
+            Toast.makeText(getApplicationContext(), "This device does not support for Google Play Service!", Toast.LENGTH_LONG).show();
         }
     }
+
+    else
+
+    {
+        Intent intent = new Intent(this, GCMRegistrationIntentService.class);
+        startService(intent);
+    }
+}
 
 
     public class AgendaAdapter extends ArrayAdapter {
@@ -167,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
             holder.event.setText(agenda.get(position).getEvent());
             holder.description.setText(agenda.get(position).getDescription());
             holder.venue.setText(agenda.get(position).getVenue());
-            holder.time.setText(agenda.get(position).getStart()+"-"+agenda.get(position).getEnd());
+            holder.time.setText(agenda.get(position).getStart() + "-" + agenda.get(position).getEnd());
             return convertView;
         }
 
