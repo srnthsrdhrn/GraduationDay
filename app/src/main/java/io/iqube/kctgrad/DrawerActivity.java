@@ -39,7 +39,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
-
+                .withHeaderBackground(R.drawable.header)
                 .withSavedInstance(savedInstanceState)
                 .build();
 
@@ -73,6 +73,12 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
                             }
 
+                            if (drawerItem.getIdentifier() == 2) {
+//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
+                                Fragment a = AgendaFragment.newInstance();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
+                            }
+
                             if (drawerItem.getIdentifier() == 3) {
 //                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
 
@@ -81,11 +87,6 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                             }
 
 
-                            if (drawerItem.getIdentifier() == 2) {
-//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
-                                Fragment a = AgendaFragment.newInstance();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
-                            }
 
                             if (intent != null) {
                                 DrawerActivity.this.startActivity(intent);
@@ -102,7 +103,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
             // set the selection to the item with the identifier 11
-            result.setSelection(1, true);
+            result.setSelection(2, true);
 
 
 

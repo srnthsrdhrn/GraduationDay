@@ -40,6 +40,8 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class FeedbackFragment extends Fragment {
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -191,12 +193,21 @@ public class FeedbackFragment extends Fragment {
                 {
                     Toast.makeText(FeedbackFragment.this.getActivity(), "Error with server please Try again!!", Toast.LENGTH_LONG).show();
                 }
+
+                if(done1)
+                {
+                    hideLoader();
+                }
+                else
+                    done1=true;
             }
 
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
                 Toast.makeText(FeedbackFragment.this.getActivity().getApplicationContext(), "Network Error happened!!", Toast.LENGTH_LONG).show();
             }
+
+
         });
 
 
@@ -209,6 +220,14 @@ public class FeedbackFragment extends Fragment {
             {
                 spinnerAdapter.addAll(response.body());
             }
+
+            if(done1)
+            {
+                hideLoader();
+            }
+            else
+                done1=true;
+
         }
 
         @Override
@@ -267,6 +286,15 @@ public class FeedbackFragment extends Fragment {
     {
         if(ring!=null)
             ring.cancel();
+    }
+
+    Boolean done1=false;
+    public Boolean isLoaderVisible()
+    {
+        if(ring!=null)
+            return ring.isShowing();
+        else
+            return false;
     }
 
 
