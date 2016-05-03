@@ -1,9 +1,7 @@
 package io.iqube.kctgrad;
 
 import android.app.IntentService;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -35,7 +33,7 @@ public class GCMRegistrationIntentService extends IntentService {
             token = instanceId.getToken(getString(R.string.gcm_defaultSenderId), GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
             Log.w("GCMRegIntentService", "token:"+token);
             GcmPubSub pubSub = GcmPubSub.getInstance(this);
-            String topic = "gcmNotification";
+            String topic = "kct_grad";
             pubSub.subscribe(token, "/topics/" + topic, null);
             registrationComplete = new Intent(REGISTRATION_SUCCESS);
             registrationComplete.putExtra("token", token);
