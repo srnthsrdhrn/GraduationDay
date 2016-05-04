@@ -32,17 +32,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="04:15-5:30"
-            android:textSize="20dp"
-            android:id="@+id/time"
-            android:layout_marginRight="48dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginTop="30dp"
+        <AnalogClock
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/start"
             android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/end"
+            android:layout_toStartOf="@+id/end" />
+
+        <AnalogClock
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/end"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>

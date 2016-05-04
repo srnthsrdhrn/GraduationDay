@@ -75,7 +75,7 @@ public class AgendaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.content_main, container, false);
-         }
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -159,7 +159,7 @@ public class AgendaFragment extends Fragment {
             holder.event.setText(agenda.get(position).getEvent());
             holder.description.setText(agenda.get(position).getDescription());
             holder.venue.setText(agenda.get(position).getVenue());
-            holder.time.setText(agenda.get(position).getStart()+"-"+agenda.get(position).getEnd());
+           // holder.time.setText(agenda.get(position).getStart()+"-"+agenda.get(position).getEnd());
             return convertView;
         }
 
