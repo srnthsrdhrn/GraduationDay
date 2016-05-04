@@ -8,7 +8,10 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -141,6 +144,29 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
     {
 
     }
+
+    public void registerGcm()
+    {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+        if(ConnectionResult.SUCCESS!=resultCode)
+
+        {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                Toast.makeText(getApplicationContext(), "Google Play Service is not Enabled in this device!", Toast.LENGTH_LONG).show();
+                GooglePlayServicesUtil.showErrorNotification(resultCode, getApplication());
+            } else {
+                Toast.makeText(getApplicationContext(), "This device does not support for Google Play Service!", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        else
+
+        {
+            Intent intent = new Intent(this, GCMRegistrationIntentService.class);
+            startService(intent);
+        }
+    }
+
 
    
 
