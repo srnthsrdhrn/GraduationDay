@@ -39,7 +39,7 @@ public class GCMPushReceiverService extends GcmListenerService {
         realm.close();
 
 
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this,DrawerActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             int requestCode =0;
             PendingIntent pendingIntent = PendingIntent.getActivity(this,requestCode,intent,PendingIntent.FLAG_ONE_SHOT);
