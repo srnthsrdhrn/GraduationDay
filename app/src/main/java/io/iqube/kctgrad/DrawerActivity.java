@@ -77,8 +77,8 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Agenda").withDescription("Happenings").withIdentifier(2),
                         new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(3),
-                        new PrimaryDrawerItem().withName("Feedback").withDescription("Give FeedBack").withIdentifier(1)
-
+                        new PrimaryDrawerItem().withName("Feedback").withDescription("Give FeedBack").withIdentifier(1),
+                        new PrimaryDrawerItem().withName("Map").withDescription("Campus Map").withIdentifier(4)
 
 
                          ) // add the items we want to use with our Drawer
@@ -105,7 +105,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
 
                             if (drawerItem.getIdentifier() == 2) {
 //                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
-                                Fragment a = AgendaFragment.newInstance();
+                                Fragment a = Agenda_Image.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
                             }
 
@@ -120,7 +120,11 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                                 Fragment f = AboutFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
                             }
-
+                            if (drawerItem.getIdentifier() == 4) {
+//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
+                                Fragment a = map.newInstance();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
+                            }
 
 
                             if (intent != null) {
