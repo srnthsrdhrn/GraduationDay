@@ -1,17 +1,17 @@
 package io.iqube.kctgrad;
 
-import android.app.Activity;
-import android.support.v4.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -24,36 +24,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link AgendaFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AgendaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AgendaFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
+
     ListView lvAgenda;
+    ProgressDialog ring;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static AgendaFragment newInstance() {
         AgendaFragment fragment = new AgendaFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -64,10 +45,7 @@ public class AgendaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -87,6 +65,7 @@ public class AgendaFragment extends Fragment {
 
 
     public void fetchEvents() {
+        showSpinner();
         Ion.with(this).load("http://iq.bookflip.in/graduation_day/returnevents.php").asString().withResponse().setCallback(
                 new FutureCallback<Response<String>>() {
                     @Override
@@ -120,7 +99,14 @@ public class AgendaFragment extends Fragment {
 
                             }
 
+                            hideLoader();
+
                         }
+                        else
+                        {
+                            Toast.makeText(getContext(),"Some Error Happened",Toast.LENGTH_SHORT).show();
+                        }
+
 
                     }
                 }
@@ -173,5 +159,17 @@ public class AgendaFragment extends Fragment {
 
     }
 
+    protected void showSpinner()
+    {
 
+        ring = ProgressDialog.show(getActivity(), "Please wait ...", "Loading ...", true);
+
+        ring.setCancelable(false);
+    }
+
+    protected void hideLoader()
+    {
+        if(ring!=null)
+            ring.cancel();
+    }
 }

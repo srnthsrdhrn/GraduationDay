@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import io.iqube.kctgrad.model.Notification;
 import io.realm.Realm;
@@ -47,7 +48,14 @@ public class NotificationFragment extends Fragment {
         loadData();
 
         ListView lv=(ListView)v.findViewById(R.id.listView2);
+        if(notifications.size()==0)
+        {
+            TextView tt=new TextView(getContext());
+            tt.setText("No Notifications received!! \nAny new notifications will appear here");
+            tt.setPadding(10,10,10,10);
+            lv.addHeaderView(tt);
 
+        }
         NotificationAdapter adapter=new NotificationAdapter(getContext(),notifications);
         lv.setAdapter(adapter);
 

@@ -41,7 +41,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
         setSupportActionBar(toolbar);
         SharedPreferences gcm = getSharedPreferences("gcm",getApplicationContext().MODE_PRIVATE);
         String reg = gcm.getString("reg", "");
-        if(reg!="yes") {
+        if(!reg.equals("yes")) {
             regGcm();
         }
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -79,7 +79,12 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                         new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(3),
                         new PrimaryDrawerItem().withName("Feedback").withDescription("Give FeedBack").withIdentifier(1)
 
+
+
                          ) // add the items we want to use with our Drawer
+                .addStickyDrawerItems(
+                        new PrimaryDrawerItem().withName("About").withIdentifier(5)
+                )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
@@ -107,6 +112,12 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                             if (drawerItem.getIdentifier() == 3) {
 //                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
                                 Fragment f = NotificationFragment.newInstance();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
+                            }
+
+                            if (drawerItem.getIdentifier() == 5) {
+//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
+                                Fragment f = AboutFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, f).commit();
                             }
 

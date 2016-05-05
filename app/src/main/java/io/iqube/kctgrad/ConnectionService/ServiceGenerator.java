@@ -18,8 +18,8 @@ import retrofit2.http.POST;
  * Created by raja sudhan on 2/2/2016.
  */public class ServiceGenerator {
 
-    public static final String API_BASE_URL = "http://10.1.75.35:8000/polls/api/";
-    //    public static final String API_BASE_URL = "http://52.76.231.45/api/v1/";
+//    public static final String API_BASE_URL = "http://10.1.75.35:8000/polls/api/";
+        public static final String API_BASE_URL = "http://kctgrad-brafius.rhcloud.com/polls/api/";
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     private static Retrofit.Builder builder =

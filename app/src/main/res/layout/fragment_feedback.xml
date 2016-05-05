@@ -16,7 +16,6 @@
             android:layout_height="match_parent"
             android:dividerHeight="0px"
             android:divider="@android:color/transparent"
-            android:id="@+id/listView"
-            android:paddingLeft="10sp" />
+            android:id="@+id/listView" />
     </LinearLayout>
 </RelativeLayout>

@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
@@ -98,11 +100,11 @@ public class FeedbackFragment extends Fragment {
 
         Questions=(ListView) view.findViewById(R.id.listView);
 
-        View HeaderView= LayoutInflater.from(getContext()).inflate(R.layout.lv_questions_header,null);
+        LinearLayout HeaderView=(LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.lv_questions_header,null);
+//        HeaderView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-
-        View FooterView= LayoutInflater.from(getContext()).inflate(R.layout.lv_questions_footer,null);
-        Questions.addHeaderView(HeaderView);
+        LinearLayout FooterView= (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.lv_questions_footer,null);
+        Questions.addHeaderView(HeaderView,null,false);
         Questions.addFooterView(FooterView);
 
         name=(EditText)view.findViewById(R.id.name) ;
@@ -280,7 +282,7 @@ public class FeedbackFragment extends Fragment {
 
         ring = ProgressDialog.show(getActivity(), "Please wait ...", "Loading ...", true);
 
-        ring.setCancelable(true);
+        ring.setCancelable(false);
     }
 
     protected void hideLoader()
@@ -299,8 +301,41 @@ public class FeedbackFragment extends Fragment {
     }
 
 
+    public Boolean isInvalidInput()
+    {
+        if(name.getText().toString().isEmpty())
+        {
+            Toast.makeText(FeedbackFragment.this.getActivity(), "Please Fill the name", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        JsonArray arr=adapter.getPostData();
+
+        for (int i=0;i<arr.size();i++)
+        {
+            JsonObject obj=(JsonObject) arr.get(i);
+            if(obj.get("option").isJsonNull()) {
+                Toast.makeText(FeedbackFragment.this.getActivity(), "Please fill all Questions", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        }
+
+
+        return false;
+
+
+    }
+
+
+
     protected void submitData()
     {
+
+        if(isInvalidInput())
+        {
+            return;
+        }
+
 
         ServiceGenerator.KCTClient client=ServiceGenerator.createService(ServiceGenerator.KCTClient.class);
 

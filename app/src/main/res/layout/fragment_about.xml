@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="io.iqube.kctgrad.AboutFragment"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10sp">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About KCT"
+            android:id="@+id/textView3"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kumaraguru College of Technology (KCT), Coimbatore is an Engineering College started in 1984 under the auspices of the Ramanandha Adigalar Foundation, a charitable educational trust of Sakthi Group. It is situated in a sprawling campus of 150 acres in the IT corridor of Coimbatore which in many ways is a front runner in the eco system."
+            android:id="@+id/textView4"
+            android:layout_marginTop="10sp" />
+
+
+    </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view2"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About iQube"
+                    android:id="@+id/textView32"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="iQube is a Technology Incubation Centre at KCT that aims at people working on their ideas to see it as a product. iQube is specially meant for students to improve and excel their technical experience. It has an R &amp; D lab where one can try experimenting their idea with the available resources that are available in the lab. For outstanding Ideas and Projects, one would even get funded to complete a prototype model. It further aims at mentoring and training the interested ones with the necessary and updated technology."
+                    android:id="@+id/textView42"
+                    android:layout_marginTop="10sp" />
+            </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+</ScrollView>
+</LinearLayout>
