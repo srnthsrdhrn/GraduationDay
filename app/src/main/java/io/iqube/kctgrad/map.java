@@ -3,25 +3,27 @@ package io.iqube.kctgrad;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class home extends Fragment {
+public class map extends Fragment {
 
-    ImageView home;
+    ImageView map;
 
-  public static home newInstance() {
-        home fragment = new home();
+    public static map newInstance() {
+        map fragment = new map();
+
         return fragment;
     }
 
-    public home() {
+    public map() {
         // Required empty public constructor
     }
 
@@ -33,20 +35,18 @@ public class home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.image_fragment, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        home = (ImageView)view.findViewById(R.id.image);
+        map = (ImageView)view.findViewById(R.id.image);
         Picasso.with(getContext())
-                .load(R.drawable.home)
-                .into(home);
+                .load("http://iq.bookflip.in/graduation_day/images/android/mappp.jpg")
+                .into(map);
 
     }
-
 
 
 }
