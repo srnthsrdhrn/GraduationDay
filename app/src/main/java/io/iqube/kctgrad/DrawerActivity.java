@@ -64,7 +64,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
-                .withHeaderBackground(R.drawable.header)
+                .withHeaderBackground(R.drawable.header2)
                 .withSavedInstance(savedInstanceState)
                 .build();
 
@@ -156,10 +156,10 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
             // set the selection to the item with the identifier 11
-            result.setSelection(2, true);
+            result.setSelection(7, true);
 
 
-
+            result.openDrawer();
         }
     }
 

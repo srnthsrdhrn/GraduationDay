@@ -1,17 +1,16 @@
 package io.iqube.kctgrad;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class map extends Fragment {
 
@@ -45,6 +44,8 @@ public class map extends Fragment {
         Picasso.with(getContext())
                 .load(R.drawable.map)
                 .into(map);
+
+        PhotoViewAttacher mAttacher = new PhotoViewAttacher(map);
 
     }
 

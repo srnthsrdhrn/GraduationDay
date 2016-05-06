@@ -16,9 +16,20 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
     }
     productFlavors {
+    }
+
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'armeabi-v7a', 'mips'
+            universalApk true
+        }
     }
 }
 
@@ -40,5 +51,5 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.commit451:PhotoView:1.2.4'
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
 }
