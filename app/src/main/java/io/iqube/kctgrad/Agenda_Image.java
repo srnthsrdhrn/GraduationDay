@@ -59,6 +59,8 @@ public class Agenda_Image extends Fragment implements View.OnClickListener {
 
     }
 
+
+
     @Override
     public void onClick(View v) {
 
