@@ -6,13 +6,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ViewFlipper;
 
 import com.squareup.picasso.Picasso;
 
 
-public class Agenda_Image extends Fragment {
+public class Agenda_Image extends Fragment implements View.OnClickListener {
+    ViewFlipper image_slide;
+    Button next;
+    Button previous;
+    ImageView dept;
     ImageView agenda;
+    ImageView timing;
     public static Agenda_Image newInstance() {
         Agenda_Image fragment = new Agenda_Image();
                 return fragment;
@@ -32,15 +39,36 @@ public class Agenda_Image extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.image_fragment, container, false);
+        return inflater.inflate(R.layout.agenda_image, container, false);
     }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        agenda = (ImageView)view.findViewById(R.id.image);
-        Picasso.with(getContext())
-                .load("http://iq.bookflip.in/graduation_day/images/android/online_scheduleee.jpg")
-                .into(agenda);
+        image_slide = (ViewFlipper)view.findViewById(R.id.image_slider);
+        next=(Button)view.findViewById(R.id.next);
+        previous=(Button)view.findViewById(R.id.previous);
+        timing=(ImageView)view.findViewById(R.id.timing);
+        agenda=(ImageView)view.findViewById(R.id.agenda);
+        dept=(ImageView)view.findViewById(R.id.dept);
+        Picasso.with(getContext()).load(R.drawable.deptmt).into(dept);
+        Picasso.with(getContext()).load(R.drawable.timing).into(timing);
+        Picasso.with(getContext()).load(R.drawable.agenda).into(agenda);
+        next.setOnClickListener(this);
+        previous.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if(v==next)
+        {
+            image_slide.showNext();
+        }
+        else if(v==previous)
+        {
+            image_slide.showPrevious();
+        }
 
     }
 

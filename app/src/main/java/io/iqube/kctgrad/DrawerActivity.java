@@ -75,10 +75,12 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
+                        new PrimaryDrawerItem().withName("Home").withIdentifier(7),
                         new PrimaryDrawerItem().withName("Agenda").withDescription("Happenings").withIdentifier(2),
-                        new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(3),
+                        new PrimaryDrawerItem().withName("About ").withDescription("Know About Your Guest").withIdentifier(6),
+                        new PrimaryDrawerItem().withName("Map").withDescription("Campus Map").withIdentifier(4),
                         new PrimaryDrawerItem().withName("Feedback").withDescription("Give FeedBack").withIdentifier(1),
-                        new PrimaryDrawerItem().withName("Map").withDescription("Campus Map").withIdentifier(4)
+                        new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(3)
 
 
                          ) // add the items we want to use with our Drawer
@@ -109,6 +111,12 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
                             }
 
+                            if (drawerItem.getIdentifier() == 6) {
+//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
+                                Fragment a = about_guest.newInstance();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
+                            }
+
                             if (drawerItem.getIdentifier() == 3) {
 //                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
                                 Fragment f = NotificationFragment.newInstance();
@@ -125,6 +133,12 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                                 Fragment a = map.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
                             }
+                            if (drawerItem.getIdentifier() == 7) {
+//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
+                                Fragment a = home.newInstance();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
+                            }
+
 
 
                             if (intent != null) {

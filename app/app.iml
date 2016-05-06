@@ -118,8 +118,8 @@
     <orderEntry type="library" exported="" name="cardview-v7-23.3.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-8.3.0" level="project" />
     <orderEntry type="library" exported="" name="androidasync-2.1.7" level="project" />
-    <orderEntry type="library" exported="" name="okio-1.6.0" level="project" />
     <orderEntry type="library" exported="" name="gson-2.6.1" level="project" />
+    <orderEntry type="library" exported="" name="okio-1.6.0" level="project" />
     <orderEntry type="library" exported="" name="realm-annotations-0.89.1" level="project" />
     <orderEntry type="library" exported="" name="ion-2.1.7" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.3.0" level="project" />
