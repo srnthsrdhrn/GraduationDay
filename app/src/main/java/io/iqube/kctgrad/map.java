@@ -43,7 +43,7 @@ public class map extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         map = (ImageView)view.findViewById(R.id.image);
         Picasso.with(getContext())
-                .load("http://iq.bookflip.in/graduation_day/images/android/mappp.jpg")
+                .load(R.drawable.map)
                 .into(map);
 
     }
