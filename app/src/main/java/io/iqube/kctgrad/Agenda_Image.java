@@ -52,7 +52,7 @@ public class Agenda_Image extends Fragment implements View.OnClickListener {
         agenda=(ImageView)view.findViewById(R.id.agenda);
         dept=(ImageView)view.findViewById(R.id.dept);
         Picasso.with(getContext()).load(R.drawable.deptmt).into(dept);
-        Picasso.with(getContext()).load(R.drawable.jayadev).into(timing);
+        Picasso.with(getContext()).load(R.drawable.timing).into(timing);
         Picasso.with(getContext()).load(R.drawable.agenda).into(agenda);
         next.setOnClickListener(this);
         previous.setOnClickListener(this);
