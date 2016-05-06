@@ -50,10 +50,9 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                 if (intent.getAction().endsWith(GCMRegistrationIntentService.REGISTRATION_SUCCESS)) {
                     String token = intent.getStringExtra("token");
                     String topic = intent.getStringExtra("topic");
-                    Toast.makeText(getApplicationContext(), "GCM token:" + token + "\n" + "GCM topic: " + topic, Toast.LENGTH_LONG).show();
                 } else if (intent.getAction().equals(GCMRegistrationIntentService.REGISTRATION_ERROR)) {
 
-                    Toast.makeText(getApplicationContext(), "GCM Registration Error !!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Error in Receiving Notification", Toast.LENGTH_LONG).show();
                 } else {
 
                 }
@@ -76,11 +75,11 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Home").withIdentifier(7),
-                        new PrimaryDrawerItem().withName("Agenda").withDescription("Happenings").withIdentifier(2),
-                        new PrimaryDrawerItem().withName("About ").withDescription("Know About Your Guest").withIdentifier(6),
-                        new PrimaryDrawerItem().withName("Map").withDescription("Campus Map").withIdentifier(4),
-                        new PrimaryDrawerItem().withName("Feedback").withDescription("Give FeedBack").withIdentifier(1),
-                        new PrimaryDrawerItem().withName("Notifications").withDescription("Get Notified").withIdentifier(3)
+                        new PrimaryDrawerItem().withName("Agenda").withIdentifier(2),
+                        new PrimaryDrawerItem().withName("About Guests").withIdentifier(6),
+                        new PrimaryDrawerItem().withName("Map").withIdentifier(4),
+                        new PrimaryDrawerItem().withName("Feedback").withIdentifier(1),
+                        new PrimaryDrawerItem().withName("Notifications").withIdentifier(3)
 
 
                          ) // add the items we want to use with our Drawer
@@ -107,7 +106,7 @@ public class DrawerActivity extends AppCompatActivity implements FeedbackFragmen
 
                             if (drawerItem.getIdentifier() == 2) {
 //                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
-                                Fragment a = Agenda_Image.newInstance();
+                                Fragment a = AgendaFragment.newInstance();
                                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, a).commit();
                             }
 

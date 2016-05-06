@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.squareup.picasso.Picasso;
@@ -15,8 +15,8 @@ import com.squareup.picasso.Picasso;
 
 public class Agenda_Image extends Fragment implements View.OnClickListener {
     ViewFlipper image_slide;
-    Button next;
-    Button previous;
+    TextView next;
+    TextView previous;
     ImageView dept;
     ImageView agenda;
     ImageView timing;
@@ -46,8 +46,8 @@ public class Agenda_Image extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         image_slide = (ViewFlipper)view.findViewById(R.id.image_slider);
-        next=(Button)view.findViewById(R.id.next);
-        previous=(Button)view.findViewById(R.id.previous);
+        next=(TextView) view.findViewById(R.id.next);
+        previous=(TextView) view.findViewById(R.id.previous);
         timing=(ImageView)view.findViewById(R.id.timing);
         agenda=(ImageView)view.findViewById(R.id.agenda);
         dept=(ImageView)view.findViewById(R.id.dept);
@@ -74,6 +74,8 @@ public class Agenda_Image extends Fragment implements View.OnClickListener {
         }
 
     }
+
+
 
 
 }

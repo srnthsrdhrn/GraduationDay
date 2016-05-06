@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
@@ -41,11 +42,22 @@ public class map extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         map = (ImageView)view.findViewById(R.id.image);
+
+        final PhotoViewAttacher mAttacher = new PhotoViewAttacher(map);
         Picasso.with(getContext())
                 .load(R.drawable.map)
-                .into(map);
+                .into(map, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        mAttacher.update();
+                    }
 
-        PhotoViewAttacher mAttacher = new PhotoViewAttacher(map);
+                    @Override
+                    public void onError() {
+
+                    }
+                });
+
 
     }
 

@@ -115,6 +115,9 @@ public class FeedbackFragment extends Fragment {
         Questions.setAdapter(adapter);
         degrees=(Spinner)view.findViewById(R.id.spinner);
         spinnerAdapter=new SpinnerAdapter(getContext(),degreeArrayList);
+        retryView=view.findViewById(R.id.retryView);
+
+
         loadDate();
 
 //        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -129,6 +132,15 @@ public class FeedbackFragment extends Fragment {
             }
         });
 
+
+        Button retry=(Button)view.findViewById(R.id.retry);
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideRetryView();
+                loadDate();
+            }
+        });
     }
 
 
@@ -208,6 +220,8 @@ public class FeedbackFragment extends Fragment {
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
                 Toast.makeText(FeedbackFragment.this.getActivity().getApplicationContext(), "Network Error happened!!", Toast.LENGTH_LONG).show();
+                showRetryView();
+                hideLoader();
             }
 
 
@@ -236,6 +250,8 @@ public class FeedbackFragment extends Fragment {
         @Override
         public void onFailure(Call<List<Degree>> call, Throwable t) {
             Toast.makeText(FeedbackFragment.this.getActivity().getApplicationContext(), "Network Error happened!!", Toast.LENGTH_LONG).show();
+            showRetryView();
+            hideLoader();
         }
     });
 
@@ -364,4 +380,18 @@ public class FeedbackFragment extends Fragment {
                 }
         );
     }
+
+
+    View retryView;
+
+    public void showRetryView()
+    {
+        retryView.setVisibility(View.VISIBLE);
+    }
+
+    public void hideRetryView()
+    {
+        retryView.setVisibility(View.INVISIBLE);
+    }
+
 }
