@@ -10,7 +10,7 @@ public class Option {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("choice_text")
+    @SerializedName("choice")
     @Expose
     private String choiceText;
 

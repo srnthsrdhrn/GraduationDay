@@ -1,20 +1,35 @@
 {
   "project_info": {
-    "project_number": "1034266183667",
-    "project_id": "kct-graduation"
+    "project_number": "690860736105",
+    "firebase_url": "https://kct-gday-35fe6.firebaseio.com",
+    "project_id": "kct-gday-35fe6",
+    "storage_bucket": "kct-gday-35fe6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1034266183667:android:9b38e0337ed7e764",
+        "mobilesdk_app_id": "1:690860736105:android:f771d5aa6c066fe1",
         "android_client_info": {
-          "package_name": "com.example.blackpanther.graduation_day"
+          "package_name": "io.iqube.kctgrad"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "690860736105-qhv7ter4m1h6thf6ae1a0jl26r87rcvs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.iqube.kctgrad",
+            "certificate_hash": "d880417db32ac346dd7e56ba50ad67e8245ac4b3"
+          }
+        },
+        {
+          "client_id": "690860736105-j9makdpdnlk2dm14majcl9i22752r1r3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCiBnc2o25InkR9eDrVSZQTsTb-E7kCSpE"
+          "current_key": "AIzaSyCedHpxTFkqUEgndo8No4tY8Ydx_jxYBgM"
         }
       ],
       "services": {
@@ -22,11 +37,23 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690860736105-2km4382t9v4dkv4drqn04h4o4j183hof.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.iqube.kctgradday"
+              }
+            },
+            {
+              "client_id": "690860736105-j9makdpdnlk2dm14majcl9i22752r1r3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

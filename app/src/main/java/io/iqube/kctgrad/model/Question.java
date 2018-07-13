@@ -15,18 +15,12 @@ public class Question {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("question_text")
+    @SerializedName("question")
     @Expose
     private String questionText;
-    @SerializedName("options")
+    @SerializedName("choice")
     @Expose
     private List<Option> options = new ArrayList<Option>();
-
-    /**
-     * 
-     * @return
-     *     The id
-     */
 
     public Integer getChoice_id(){return choice_id;}
 
@@ -36,47 +30,22 @@ public class Question {
         return id;
     }
 
-    /**
-     * 
-     * @param id
-     *     The id
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * 
-     * @return
-     *     The questionText
-     */
     public String getQuestionText() {
         return questionText;
     }
 
-    /**
-     * 
-     * @param questionText
-     *     The question_text
-     */
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
 
-    /**
-     * 
-     * @return
-     *     The options
-     */
     public List<Option> getOptions() {
         return options;
     }
 
-    /**
-     * 
-     * @param options
-     *     The options
-     */
     public void setOptions(List<Option> options) {
         this.options = options;
     }
